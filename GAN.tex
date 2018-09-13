@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\begin{document}
+	\title{第二周工作汇报}
+	\author{Shilong Zhang}
+	\date{8.27至 9.2}
+	\maketitle
+	
+	因为最后张老师决定做动作迁移，读了几篇与此相关的文章
+	\section{Paper Reading}
+	\subsection{Everybody Dance Now}
+	\subsubsection{Abstreact}  Transfer motion between human subjects
+	in dierent videos.
+	\subsubsection{Method overview} pose detection $\rightarrow$ global pose normalization $\rightarrow$ mapping from normalized pose stick fgures to the target	subject.  \\
+	\paragraph{Pose detection } Using a pretrained  pose detector to get the representation of resuilting pose stick figure.\\
+	\paragraph{Global pose normalization}calculate the scale and translation in the y direction (具体细节？)\\
+	\\
+	\bfseries{	Adversarial Training of image to image Translation}
+	\\
+\indent	\bfseries{1. pix2pixHD framework}  \mdseries
+	
+	\indent D由三个不同规模的描述符构成，其应该趋向于真实的x与y打高分，x与G(x)打低分，即最大化$L_{GAN}$\\
+	\indent G则希望以假乱真，其希望D给G(x)打高分，同时最小化两个损失$L_{FM}$,D给出的一个feathre—matching loss,以及一个VGGNET给出的重建误差。\\
+\indent	\bfseries 2. Temporal smoothing \mdseries \\
+	\indent 改进G，其input变为这一次的pose stick figure($x_{t-1}$) + 上次的$G(x_{t-1})$来生成下一帧，而D则两帧一起评分。\\
+\indent	\bfseries 3.Face GAN \mdseries \\
+\indent	To add more detail and realism to the face region.\\
+	
+	
+\end{document}
