@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\begin{document}
+	\title{第二周工作汇报}
+	\author{Shilong Zhang}
+	\date{8.27至 9.2}
+	\maketitle
+	看了下张老师的两篇论文，学习了网格处理用的教材《Polygon Mesh Processing》(内容很多，没有看完),以及相应的网格处理的库openmesh的基本应用,论文中一些点，比如UV maping,PCA算法，SVM分解也补了一下。最后装了下latex，学了学基本的排版。
+	\section{两篇论文}
+	\subsection{
+	CNN-based Real-time Dense Face Reconstruction with Inverse-rendered Photo-realistic Face Images}
+	\setlength{\parindent}{2em}
+	\indent
+	\paragraph{Abstract}：提出3DFaceNet（(based on CNN)在即时视频实现
+	实时的3D人脸的重建(	要与单图重建效果相等水平)以及tracking.\\
+	\indent
+	首先是解决训练集问题。因为训练网络需要不仅需要2D图片，还需要对应的高质量的3D面部模型，但是并没有这样的数据集，现在的方法也合成不了。文中重建的数据库有photo-realistic的性质，一个额外具有面部参数与角度参数的lable训练CoarseNet，一个额外具有detailed geometry labels用于训练FineNet，预测第一个数据库的前一帧扩充第一个数据集训练Tracking CoarseNet。使最终训练出的网络重建效果好并且对于表情以及快速移动的脸都有很好的鲁棒性。\\
+	\subsubsection{基础知识(人脸表示 + 图片渲染 )}
+	\indent
+	\paragraph {Rendering process}
+	1. construct (3DMM describe the face geometry and the albedo) +  face detailes such as wrinkles) 
+	2. rasterization and get the normal of every pixel
+	3. calculate the corlor with the normal ,the albedo ,the lighting 
+	\subsubsection{Overview of the process of reconstruction} 具体实现 CNN + optimization based interse rendering methods generate lables and synthesizing new images.(生成训练用的数据集)
+	\subsubsection{Inverse rendering to build the dataset for the CNN}
+	parametric face model tting $\rightarrow$ geometry renement $\rightarrow$ albedo blending
+	\\
+	\subsubsection{3DFACENET}
+	\paragraph{single CorseNet} input(the face images) $\rightarrow$
+	 output(parameters about the 3Dface and the projection) \\
+	 traning data：single- images $\rightarrow$parameters set $\rightarrow$ randomly change the $X_p$and $\alpha_{exp}$ and rendered a new face (每个重建的3DMM改变20次重建face，数据集扩大20倍)。\\
+	网络基于resnet-18，更改全连接层，损失函数细节没有看懂(需要一些网格处理的知识)。
+	\paragraph{Tracking Coarsenet} input(current frame + previouse frame's parameters) $\rightarrow$ output(current frame's parameter)\\
+	training data:这里感觉很有意思，作者认为随机的改变3D的参数是不能体现两帧之间的关联性的，作者想到一种方法来描述这种关联性，即参数的差值应该满足正态分布，于是就利用真实的视频+CaorseNet来求解正态分布参数，从而利用这个分布产生大量数据集。\\
+	关于如何利用上一帧的参数：发现仅仅继承上一帧的姿势参数最好.
+	\paragraph{FINENET} UNET\\
+	training data: 将具有细节的图像中的细节迁移到没有细节的图上。具体细节应该是将重建的3d模型中的描述细节的d以一种方式(梯度匹配)映射到target图像上。
+	\subsubsection{EXPERIMENT}
+	1. 展示了CorseNet在大体的几何特征以及角度，反射率光照以及投影参数方面的重建性能以及FineNET在细节的还原度。\\
+	\indent	2. TrackingNet 相比Single-imageNet 展示出了良好的追踪特性。\\
+	\indent 3. 相比于已有的方法，更快，效果更好。
+	\subsection{Self-supervised CNN for Unconstrained 3D Facial
+		Performance Capture from an RGB-D Camera
+}
+	\textbf{Abstract: }\\
+\indent	1.直接用无标记的RGB-D数据进行训练，学习核心张量以及细节参数.\\
+	\indent2. 并且重新设计损失函数.\\
+	\indent	3. 扩充了数据集。
+	\subsubsection{与第一篇基本相同}
+	FACEMODE：a bilinear face model（(??细节？)and facial albedo represented by PCA\\
+	Fine-Scale FAcial Geometry: encode  fine-level facial detailes by pe-vertex displacement along the normals\\
+	Rending process:  投影 + 每个点的辉度(？)计算
+	\subsubsection{CNN based learning framework}	
+	medium-scale CNN(get the parameters of model) and ne-scale CNN(get the displacement)
+	\paragraph{Training Data} 数据的预处理以及输入网络的方式\\
+	1. 先检测人脸并裁减，可以等效认为是相机内部参数的变化。
+	2. 深度信息的输入转化到相机空间(以相机为原点建立的三维坐标系？)
+	3. RGB信息通过随机改变光照进行改变以扩充数据集，并在输入的RGB-D中加入手造成阻挡但是对应的lable不变以增加网络的抗干扰性。
+	\paragraph{ Medium-Scale CNN} input(RGB-D image) $\rightarrow$ output(reduced core tensor $A_r$ and the parameter set)\\
+	特点：\\
+	1. 用两帧训练网络，但是还是依次输入(根据文中the two streams
+	are actually sharing the same network),只不过损失函数里面会有一个Pair loss来保证两帧之间的联系。
+	2. 每一帧输入RGB channels + 三通道的相机空间坐标
+	损失函数：\\
+	single loss:\\
+	$E_geo$ :两部分组成，一部分是真实点与重新渲染的反向投影点的距离，另一部分是距离在真是RGB-D上的投影。	\\
+	$E_col$: 捕捉的人脸的颜色差异\\
+	$E_lan$衡量一些重要的3dmodel的点投影的距离，特别眼部对于表情比较重要，在眼部加了一些点。
+	$E_reg$ 正则项避免过拟合\\
+	Pair loss \\
+	$E_flow$ 表征移动特性与光流的匹配程度，并且数据集中所有的光流是再扩充之前算好的。\\
+	$E_same$ 抑制关于同一人脸的的参数(反射率与人脸模型参数)变化 \\
+	$E_regA$ 应该是核心张量并不是提前算好的也是不断地学习更新的，也就是说，这个网络训练好了就可以适用各种各样的数据集(那个核心张量应该是整个数据集的函数)。感觉比较疑惑吧，感觉这个不是很科学，这个映射学习的如何收敛到$A_r$,真的可以应对不同的数据集吗？或许想错了。
+	\paragraph{Fine-Scale CNN} input(the intensity and xyz coordinate in the UV domain) $\rightarrow$ output(displacement ,also a UVmap) -- pixel-to-pixel net\\
+	loss fuction:\\
+	$E_sh$:根据偏移计算3D对应点的法向量，计算UVmap的intensity并计算偏差。\\
+	$E_sm$:正则项\\
+	$E_cl$:保证相邻帧之间的连续性(利用法向量来描述)\\
+	\subsubsection{Experiment} 
+	几个网络的性能
+	\paragraph{Medium-scal CNN} 增加的连续帧损失项使得均值的差值变小,对 face tensor的学习与对眼角的限制使得对于细微表情的捕捉也表现得很好.\\
+	\paragraph{Fine-Scale CNN} 重建了细节
+	\paragraph{compare to state of art method} 大家没打
+
+ \section{openmesh}
+ 	openmesh内置适合表示多边形网格的数据结构，并且封装了相关的支撑函数。我配置的是c++版本的静态库，据说比较完善。
+	\subsection{.off文件} 
+	描述物体表面多边形的文件,openmesh编译运行后的输出文件\\
+	下为一个输出文件
+ 	\\OFF 以OFF关键字开头，ASCII文件。\\
+ 	8 6 0 顶点的数量、面的数量、边的数量(一般可忽略)\\
+ 	-1 -1 1\\
+ 	1 -1 1\\
+ 	1 1 1\\
+ 	-1 1 1\\
+ 	-1 -1 -1\\
+ 	1 -1 -1\\
+ 	1 1 -1\\
+ 	-1 1 -1 8个顶点的坐标\\
+ 	4 0 1 2 3\\ 
+ 	4 7 6 5 4 \\
+ 	4 1 0 4 5\\ 
+ 	4 2 1 5 6 \\
+ 	4 3 2 6 7 \\
+ 	4 0 3 7 4  4代表4个顶点，后面为这个面包含的顶点 \\
+  	\subsection{基本操作} 
+  	一些关于点线面的基本操作	\\
+  	1. 网格文件读写\\
+  	2. 顶点相关的操作，遍历，数目等,\\
+  	3. 面的遍历,面对应顶点以及对应边以及邻域面的遍历。\\
+  	4. 边的遍历，边的两个顶点的访问,反向对边获取，边对应面的获取。
+  	5. 顶点周围面的获取\\
+  	6. 面法向向量的计算，顶点邻域面法向的平均，向量的基本运算。
+	
+	
+\end{document}
