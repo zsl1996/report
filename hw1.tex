@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Template for homework of Introduction to Machine Learning.
+%
+%  Fill in your name, lecture number, lecture date and body
+%  of homework as indicated below.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt,letter,notitlepage]{article}
+%Mise en page
+\usepackage[left=2cm, right=2cm, lines=45, top=0.8in, bottom=0.7in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{graphicx}
+\usepackage{pdfpages} 
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\footrulewidth}{1.5pt}
+\pagestyle{fancy}
+\newcommand\Loadedframemethod{TikZ}
+\usepackage[framemethod=\Loadedframemethod]{mdframed}
+
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\setlength{\topmargin}{0pt}
+\setlength{\textheight}{9in}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Define the Exercise environment %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\mdtheorem[
+topline=false,
+rightline=false,
+leftline=false,
+bottomline=false,
+leftmargin=-10,
+rightmargin=-10
+]{exercise}{\textbf{Exercise}}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% End of the Exercise environment %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Define the Solution Environment %%
+%%%%%%%%%%%%%%%%%%%%%%%
+\declaretheoremstyle
+[
+spaceabove=0pt, 
+spacebelow=0pt, 
+headfont=\normalfont\bfseries,
+notefont=\mdseries, 
+notebraces={(}{)}, 
+headpunct={:\quad}, 
+headindent={},
+postheadspace={ }, 
+postheadspace=4pt, 
+bodyfont=\normalfont, 
+qed=$\blacksquare$,
+preheadhook={\begin{mdframed}[style=myframedstyle]},
+	postfoothook=\end{mdframed},
+]{mystyle}
+
+\declaretheorem[style=mystyle,title=Solution,numbered=no]{solution}
+\mdfdefinestyle{myframedstyle}{%
+	topline=false,
+	rightline=false,
+	leftline=false,
+	bottomline=false,
+	skipabove=-6ex,
+	leftmargin=-10,
+	rightmargin=-10}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% End of the Solution environment %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Homework info.
+\newcommand{\posted}{\text{Sep. 10, 2018}}       			%%% FILL IN POST DATE HERE
+\newcommand{\due}{\text{Sep. 17, 2018}} 			%%% FILL IN Due DATE HERE
+\newcommand{\hwno}{\text{1}} 		           			%%% FILL IN LECTURE NUMBER HERE
+
+
+%%%%%%%%%%%%%%%%%%%%
+%% Put your information here %%
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\name}{\text{Shilong Zhang}}  	          			%%% FILL IN YOUR NAME HERE
+\newcommand{\id}{\text{PB14214061}}		       			%%% FILL IN YOUR ID HERE
+%%%%%%%%%%%%%%%%%%%%
+%% End of the student's info %%
+%%%%%%%%%%%%%%%%%%%
+
+
+\lhead{
+	\textbf{\name}
+}
+\rhead{
+	\textbf{\id}
+}
+\chead{\textbf{
+		Homework: \hwno
+}}
+
+
+\begin{document}
+\vspace*{-4\baselineskip}
+\thispagestyle{empty}
+
+
+\begin{center}
+{\bf\large Introduction to Machine Learning}\\
+{Fall 2018}
+\end{center}
+
+\noindent
+Lecturer: Jie Wang  			 %%% FILL IN LECTURER HERE
+\hfill
+Homework \hwno             			
+\\
+Posted: \posted
+\hfill
+Due: \due
+\\
+Name:  \name			
+\hfill
+ID: \id  					
+\hfill
+
+\noindent
+\rule{\textwidth}{2pt}
+
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BODY OF HOMEWORK GOES HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Notice, }to get the full credits, please present your solutions step by step.
+
+\begin{exercise}[\textnormal{2pts}]
+	Show that $(1-\epsilon)^m\leq e^{-m\epsilon}$, where $m\in \mathbb{N}$.
+\end{exercise}
+
+\begin{solution} 
+	There may be another condition lost,the $\epsilon \in [-\infty ,1]$ ,otherwise if $\epsilon = 2 $ and $m = 2$ ,the inequality is broken.\\
+	\indent	And with my condition ,the question will be easy ,we all know that
+		$$ e^{x} \leq (1-x), \forall x\in [-\infty,1]$$
+	\indent This is easy to prove.We can make the fuction $$f(x)  = e ^{-x} - 1 + x $$
+	\indent	$f(x) = 0$ when $x = 0$,and $f ^{'}(x) = 1 - e ^{-x} $,and we can know 
+	\begin{equation}
+	f^{'}(x)
+		\begin{cases}
+			\leq 0 &\mbox{if $x \leq 0$}\\
+		
+			> 0 &\mbox{if $x > 0$}
+		\end{cases}
+	\end{equation}
+	\indent So  $$0 \text { s }  f(x)_{min} \text{ when } x \in [-\infty,1] \eqno{(1)} $$
+	and for m = 0 , m = 1 ,the inequality is ok,and we can assume that the inequality is ok for all $m \leq N$ ,and for $m = N +1 $,
+	$$(1-\epsilon)^{N+1} = (1-\epsilon)^{N}*(1-\epsilon) \leq  e^{-(N\epsilon)}*(1 - \epsilon)
+	 $$
+	\indent	then use (1) we have proved,
+	$$e^{-(N\epsilon)}*(1 - \epsilon) \leq e^{-(N\epsilon)} * e^{-\epsilon}  = e^{-(N+1)\epsilon} $$
+	\indent The inequality is ok for N+1,so we prove it!
+	
+
+\end{solution}
+
+
+\begin{exercise}[Markov inequality \textnormal{2pts}]
+	Let $X$ be a nonnegative randome variable on $\mathbb{R}$. Then, for all $t>0$, show that
+	$$\mathbf{P}(X\geq t)\leq \frac{\mathbf{E}[X]}{t}.$$
+\end{exercise}
+
+\begin{solution}
+	   For noneegatave randome variable, we assume $f(x)$ is the probablity distribution function of the x;
+	   for any  $t\geq 0$
+		$$ E(X) = \int_{0}^{\infty} xf(x) dx \geq \int_{t}^{\infty} xf(x) dx  \geq t\int_{t}^{\infty} f(x) dx  = tP(x\geq t) $$ 
+		\indent This exactly the what we need. 
+\end{solution}
+
+
+\begin{exercise}[VC-dimension \textnormal{2pts}]
+	Assume that the instance space $X=\mathbb{R}^2$ and the hypothesis space $H$ be the set of all linear threshold functions defined on $\mathbb{R}^2$. Find $VC(H)$ and prove it.
+\end{exercise}
+
+\begin{solution}
+	Put your solutions here. 
+\end{solution}
+
+\begin{exercise}[Learning intervals \textnormal{4pts}] 
+	Let the target concept class be $C=\{[a,b]:a<b, a,b\in\mathbb{R}\}$ and the hypotheses class $H=C$, and the version space be $VS_{H,D}$. Each $c\in C$ labels the points inside the interval positive and the others negative. A consistent learner will pick a consistent hypothesis---if any---$h\in H$ according to a set of i.i.d. samples $\{(x_1,c(x_1)),(x_2,c(x_2),\ldots,(x_m,c(x_m)\}$ that obey an unknown distribution $\mathcal{D}$. Please find 
+	$$\mathbf{P}[\exists\, h\in VS_{H,D} \mbox{ and } error_{\mathcal{D}}(h)>\epsilon],$$
+	and the corresponding sample complexity.
+\end{exercise}
+
+
+\begin{solution}
+	Put your solutions here. 
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
