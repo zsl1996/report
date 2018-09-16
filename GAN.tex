@@ -8,7 +8,9 @@
 	\date{8.27至 9.2}
 	\maketitle
 	
-	因为最后张老师决定做动作迁移，读了几篇与此相关的文章
+	1.因为最后张老师决定做动作迁移，读了几篇与此相关的文章。
+	2.，因为要用GAN，看了一些台大李弘毅的GAN相关的课程。
+	3.学习了一些机器学习理论。
 	\section{Paper Reading}
 	\subsection{Everybody Dance Now}
 	\subsubsection{Abstreact}  Transfer motion between human subjects
@@ -27,6 +29,32 @@
 	\indent 改进G，其input变为这一次的pose stick figure($x_{t-1}$) + 上次的$G(x_{t-1})$来生成下一帧，而D则两帧一起评分。\\
 \indent	\bfseries 3.Face GAN \mdseries \\
 \indent	To add more detail and realism to the face region.\\
+	有一点类似于残差网络的思想，加一个恒等映射，那么经过与D的对抗，生成的至少不会比映射前的差。
+	\subsubsection{Experiments} 质量评价中是让生成的图像用Detector检测出关键点，算这些关键点与原始pose的距离，为了避免有些关键点没有检测到的问题，只算全检测到的。
+	\subsection{Dense Pose Transfer}
+	\bfseries	Abstract \mdseries \\
+	Surface-based pose estimation + deep generative models,a two-stream architecture   \\
+	warping module(基于UV贴图，包含较多纹理细节) + predictive module (Data drive)，具有互补的优点。 \\
+	
+	\indent 两个并行部分最开始都使用一个叫做Densopose的网络，他可以先把pixel分类到24个预先设定的身体表面模块，之后回归精确坐标·\\
+	
+	\bfseries 1. Predictive stream \mdseries \\
+	\indent	a conditional generative model ,
+	
+	\subsection{机器学习理论}
+	\bfseries PAC（(Probably Approximately Correct)Learning \mdseries \\
+	The learner: the strategy to select hypothesis from the hypothesis set \\
+	ML Pipline： 如何根据Data Sampling 在 Hypothesis Set里面选择一个去逼近target fuction，这三个因素也是决定机器学习效果的最主要的三个因素。
+	注意越多的采样点可以让我们向target fuction有一个高概率的逼近。
+	\paragraph{PAC learnability} H 是否可以在多项式时间内，找到一个高概率的target function 的高精确度估计。	 
+	\paragraph{Sample complexity} 保证 PAC Solution 的最少训练样本。
+	\paragraph{Consistent Learner} Leaarner 选择的假设完美的符合训练数据。
+	\paragraph{PAC Bound - consistent Learner} Version space 里面，至少出现一个在真实分布上的错误率小于$\epsilon$的概率。
+	\paragraph{Agnostic Learning} 不知道target fuction 是否在hypothesis set里面的情况下使用最小训练误差学习。
+	\paragraph{PAC Bound - Agnostic Learner} 讲述了训练误差与泛化误差在概率上相近的水平与样本数的关系。
+	\paragraph{VC-dimension} 对于 infinite Hypotheses Spasce 的复杂度的度量，使用VC-dimension的度量在许多情况下可以得到sample复杂度的一个更紧致的下界。
+	\paragraph{Growth Function} H空间可以给与sample的lable种类个数最大值。
+	\paragraph{shettering} the instanses 所有的lable可能都会有一些hypothesis与之对应。
 	
 	
 \end{document}
