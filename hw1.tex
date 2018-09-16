@@ -190,7 +190,9 @@ ID: \id
 \end{exercise}
 
 \begin{solution}
-	Put your solutions here. 
+	$VC(H) = 3$,and we know that three points can be shatted if points $\in R^2$(there are all cases in the ppt ), and we can construct  samples that 4 poinst can't be shatted.\\
+\indent	\includegraphics[scale = 0.2]{case.jpg} \\
+	\indent	The red and black points represent two categories.
 \end{solution}
 
 \begin{exercise}[Learning intervals \textnormal{4pts}] 
@@ -201,7 +203,14 @@ ID: \id
 
 
 \begin{solution}
-	Put your solutions here. 
+	\indent	The learner can be sample,we make the  the min negative points as the a' and the max positive point as b'.\\
+	\indent We should find a upper bound of the probablity because calculate it directly is very difficult and I don't know the bound I find is tight or not .\\
+	 \indent	we use B represent $\exists\, h\in VS_{H,D} \mbox{ and } error_{\mathcal{D}}(h)>\epsilon$,and we should find a event E and P(E) $\geq$ P(B). and error(D) can be define as the Integration of distribution functions between [a,a'] and [b',b]\\
+ 	\indent How to define E ? This is  very difficult to describe it clearly .  
+ 	if we limit  Integration of distribution functions between [a,a'] equal to $\frac{\epsilon}{2}$ and [b',b] as same.
+ 	we define E as none of train points hit the interval.
+ 	So the $P(B) \leq 2(1 - \frac{\epsilon}{2} )^ m \leq 2e^{-\frac{m\epsilon}{2}} \leq \delta$ (because it must be at least one interval is miss)
+ 	So the complexity of ample $ m \geq 2\frac{ln\frac{\delta}{2}} {\epsilon}$
 \end{solution}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
