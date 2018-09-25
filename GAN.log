@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.11)  16 SEP 2018 19:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.11)  24 SEP 2018 09:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -763,22 +763,16 @@ LaTeX Font Info:    Try loading font information for C19+rm on input line 9.
 
 (c:/texlive/2018/texmf-dist/tex/latex/ctex/fd/c19rm.fd
 File: c19rm.fd 2018/01/28 v2.4.12 Chinese font definition (CTEX)
-)<<c1940.cmap>><<c1941.cmap>><<c1964.cmap>><<c1942.cmap>><<c1965.cmap>><<c1944.
-cmap>><<c1937.cmap>><<c1961.cmap>><<c1958.cmap>><<c1963.cmap>><<c1948.cmap>><<c
-1955.cmap>><<c1946.cmap>><<c1953.cmap>><<c1926.cmap>>
+)<<c1942.cmap>><<c1965.cmap>><<c1944.cmap>><<c1937.cmap>><<c1964.cmap>><<c1961.
+cmap>><<c1958.cmap>><<c1963.cmap>><<c1948.cmap>><<c1955.cmap>><<c1946.cmap>><<c
+1940.cmap>><<c1953.cmap>><<c1926.cmap>>
 Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
-quanjiao) on input line 11.
+quanjiao) on input line 12.
 <<c1949.cmap>><<c1945.cmap>><<c1952.cmap>><<c1962.cmap>><<c1939.cmap>><<c1959.c
-map>><<c1943.cmap>><<c1925.cmap>><<c1947.cmap>><<c1960.cmap>><<c1957.cmap>><<c1
-938.cmap>>
+map>><<c1943.cmap>><<c1925.cmap>><<c1960.cmap>>
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 18.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
-
- []
+(Font)              size <10.95> substituted on input line 19.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 19--20
@@ -786,14 +780,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--25
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+<<c1957.cmap>>
+Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
  []
 
 [1
 
-]<<c1954.cmap>><<c1951.cmap>><<c1950.cmap>><<c1956.cmap>>
-Overfull \hbox (19.52145pt too wide) in paragraph at lines 26--33
+]<<c1954.cmap>><<c1951.cmap>><<c1950.cmap>><<c1941.cmap>><<c1938.cmap>><<c1956.
+cmap>><<c1947.cmap>>
+Overfull \hbox (19.52145pt too wide) in paragraph at lines 27--34
 []\OT1/cmr/m/n/10.53937 G\C19/rm/m/n/10.53937/63 K \C19/rm/m/n/10.53937/59 F \C
 19/rm/m/n/10.53937/58 " \C19/rm/m/n/10.53937/61 ± \C19/rm/m/n/10.53937/45 b \C1
 9/rm/m/n/10.53937/49 œ \C19/rm/m/n/10.53937/63 ˝|\C19/rm/m/n/10.53937/26 ß| \C1
@@ -808,7 +808,7 @@ n/10.53937/48 ¸ \C19/rm/m/n/10.53937/42 á \C19/rm/m/n/10.53937/56 õ \C19/rm/m/n
  []
 
 
-Overfull \hbox (4.43468pt too wide) in paragraph at lines 26--33
+Overfull \hbox (4.43468pt too wide) in paragraph at lines 27--34
 []\C19/rm/m/n/10.53937/42 U \C19/rm/m/n/10.53937/46 ?\OT1/cmr/m/n/10.53937 G|\C
 19/rm/m/n/10.53937/26 ß| \C19/rm/m/n/10.53937/52 Ÿ\OT1/cmr/m/n/10.53937 input\C
 19/rm/m/n/10.53937/37 C \C19/rm/m/n/10.53937/58 è \C19/rm/m/n/10.53937/63 ˘ \C1
@@ -820,12 +820,7 @@ Overfull \hbox (4.43468pt too wide) in paragraph at lines 26--33
  []
 
 <<c1936.cmap>>
-Underfull \hbox (badness 10000) in paragraph at lines 35--38
-
- []
-
-
-Overfull \hbox (19.28156pt too wide) in paragraph at lines 39--40
+Overfull \hbox (19.28156pt too wide) in paragraph at lines 36--41
 []\C19/rm/m/n/10.53937/48 ¸ \C19/rm/m/n/10.53937/42 á \C19/rm/m/n/10.53937/37 ø
  \C19/rm/m/n/10.53937/60 1 \C19/rm/m/n/10.53937/37 ‹ \C19/rm/m/n/10.53937/41 © 
 \C19/rm/m/n/10.53937/65 Å \C19/rm/m/n/10.53937/47 m \C19/rm/m/n/10.53937/55 © \
@@ -839,12 +834,27 @@ ixel\C19/rm/m/n/10.53937/41 ©
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
 
  []
 
 [2]
-Overfull \hbox (0.65161pt too wide) in paragraph at lines 49--50
+Overfull \hbox (17.29082pt too wide) in paragraph at lines 49--55
+[]\C19/rm/m/n/10.53937/58 ∑ \C19/rm/m/n/10.53937/50 Ç \C19/rm/m/n/10.53937/56 g
+ \C19/rm/m/n/10.53937/47 ^^?\OT1/cmr/m/n/10.53937 GAN\C19/rm/m/n/10.53937/40 ^^
+[ \C19/rm/m/n/10.53937/46 ( \C19/rm/m/n/10.53937/43 ^^H\OT1/cmr/m/n/10.53937 ,G
+\C19/rm/m/n/10.53937/40 ^^[ \C19/rm/m/n/10.53937/51 8 \C19/rm/m/n/10.53937/40 ^
+^[ \C19/rm/m/n/10.53937/55 ¥ \C19/rm/m/n/10.53937/45 Ú \C19/rm/m/n/10.53937/51 
+, \C19/rm/m/n/10.53937/42 á \C19/rm/m/n/10.53937/41 © \C19/rm/m/n/10.53937/37 Ÿ
+ \C19/rm/m/n/10.53937/62 N \C19/rm/m/n/10.53937/55 ^^S \C19/rm/m/n/10.53937/40 
+^^T \C19/rm/m/n/10.53937/46 C \C19/rm/m/n/10.53937/44 ^^B \C19/rm/m/n/10.53937/
+63 ˝ \C19/rm/m/n/10.53937/55 ¢ \C19/rm/m/n/10.53937/40 ^^[ \C19/rm/m/n/10.53937
+/41 © \C19/rm/m/n/10.53937/37 Ÿ\OT1/cmr/m/n/10.53937 ,\C19/rm/m/n/10.53937/41 ^
+^M\OT1/cmr/m/n/10.53937 A\C19/rm/m/n/10.53937/40 ^^[
+ []
+
+[3]
+Overfull \hbox (0.65161pt too wide) in paragraph at lines 62--63
  \OT1/cmr/bx/n/10.53937 PAC learn-abil-ity[] \OT1/cmr/m/n/10.53937 H \C19/rm/m/
 n/10.53937/55 ¥ \C19/rm/m/n/10.53937/41 ƒ \C19/rm/m/n/10.53937/47 å \C19/rm/m/n
 /10.53937/61 ± \C19/rm/m/n/10.53937/63 3 \C19/rm/m/n/10.53937/40 ı \C19/rm/m/n/
@@ -854,23 +864,23 @@ n/10.53937/55 ¥ \C19/rm/m/n/10.53937/41 ƒ \C19/rm/m/n/10.53937/47 å \C19/rm/m/n
 m/m/n/10.53937/49 « \C19/rm/m/n/10.53937/40 ^^[\OT1/cmr/m/n/10.53937 target
  []
 
-[3] (./GAN.aux)
+[4] [5] (./GAN.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 12974 strings out of 492649
- 252432 string characters out of 6133384
- 279272 words of memory out of 5000000
- 16648 multiletter control sequences out of 15000+600000
- 549892 words of font info for 94 fonts, out of 8000000 for 9000
+ 13078 strings out of 492649
+ 254380 string characters out of 6133384
+ 286272 words of memory out of 5000000
+ 16752 multiletter control sequences out of 15000+600000
+ 549622 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,6n,46p,10429b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/s
 imhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows
-/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:
+/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:
 /Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun
 .ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
 s/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wind
@@ -882,19 +892,19 @@ indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
 tc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
 simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Window
 s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
-:/Windows/Fonts/simsun.ttc><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb>
-Output written on GAN.pdf (3 pages, 344566 bytes).
+:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on GAN.pdf (5 pages, 374467 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
+ 249 PDF objects out of 1000 (max. 8388607)
+ 159 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
