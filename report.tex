@@ -30,5 +30,17 @@
 	那么对一批test data,就可以先计算数据的sensitivity,让网络仅仅预测sensitivity比较低的数据(答对的概率较大)，而sensertivity比较大的数据就单独交给人来标记预测，还是有很大实用性的。
 	\paragraph{泛化能力与sharpness}现在认为loss函数的local minima周围比较sharp的泛化能力会比较差，而比较flat的泛化能力会比较好，这貌似可以解释deep learning的泛化能力会比较好，因为initialize时候很容易初始化在把比较平坦的地方，因为flat的相比sharp的还是在高维空间中占据更大的空间。
 	而sharp还是flat一个重要影响因素是训练时候的batch size，小batch size的loss local minima 一般比较flat，泛化能力就比较好(是有实验做这样的事情)，但是最近有文章论证shape的local minima 也有很好的泛化能力。
+	\paragraph{Tips for training DNN} 1.选择适合的loss function ，不同的loss function在梯度下降的时候，其表面surface 是不一样的，有的比较陡峭，易于梯度下降，有的比较平坦，难以训练。2. 选用mini-batch，在计算能力有限的时候，采用mini-batch参数更新更快。而且实验表明，采用mini-batch训练的网络往往具有更好的泛化能力。3. 采用合适的activation function 解决梯度消失问题。4. Learning rate 的选择，过大可能错过local minima，太小可能会收敛过慢，可以采用learning rate 随着epoch的增加进行减少在两者间进行权衡，其他的还有如同Adagrad，可以根据梯度大小来调整learning rate 。 5.Momentum 可以使得参数更新更平稳，避免震荡，更新更快，也有利于跳出不是很好的local minima。
+	\paragraph{避免overfitting 的方法} 1.data augmentation,如图片，加噪声，旋转等等。2.Early stopping 3.weight decay,促使无用的参数消失。4.dropout层  5.Network Structure
+	
 \section{机器学习理论}
+
+\section{Paper Reading} 
+	 \subsection{An overview of gradient descent optimization algorithms} 
+	\paragraph{Batch gradient descent} 最原始的梯度下降，每次梯度下降需要计算整个dataset的loss，更新慢，无法进习惯online training。
+	\paragraph{Stochastic gradient descent(SGD)}快速更新，每个example 更新一次，可以update online,但是每次更新是不稳定的，导致目标函数震荡严重。同时，batch gredient descent在initialization在哪个‘流域’那么最后就会下降到哪个local minima，但是SGD可能在梯度下降的时候会跳出当前的‘流域’，找到更好的一个local minima，
+	\paragraph{Mini-batch gradient descent} 1.减少了每次更新loss的方差，使得更新过程更为稳定。2.数学上对于运算的优化使得对于mini-batch的梯度运算十分的高效。
+	\paragraph{Momentum}应该是增加每次SGD在relevant direction方向上的位移，就可以减少SGD的震荡，使得convege速度变快。
+	\paragraph{Nesterov accelerated gradient(NAG)} 将求梯度的位置换为利用动量项目预测的位置，我觉得主要是可以加速最后在local minima附近的收敛速度。
+	\paragraph{Adagrad}自适应选择learning rate，对更新较快的参数(一直梯度较大)的，减小步长，对梯度较小的参数增加步长，并且随着更新的次数增加，学习步长总体趋势都是下降的，可以理解为一开始距离local minima还比较远，可以快速下降，到了local minima附近应该放慢学习率，避免震荡。但是发现，因为learning rate 一直下降，在一些网络中出现训练停止的现象。	
 \end{document}
