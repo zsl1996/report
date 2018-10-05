@@ -2,6 +2,7 @@
 \usepackage{ctex}
 \usepackage{amsmath}
 \usepackage{indentfirst}
+\usepackage{hyperref}
 \begin{document}
 	\title{工作汇报}
 	\author{Shilong Zhang}
@@ -41,6 +42,13 @@
 	\paragraph{Stochastic gradient descent(SGD)}快速更新，每个example 更新一次，可以update online,但是每次更新是不稳定的，导致目标函数震荡严重。同时，batch gredient descent在initialization在哪个‘流域’那么最后就会下降到哪个local minima，但是SGD可能在梯度下降的时候会跳出当前的‘流域’，找到更好的一个local minima，
 	\paragraph{Mini-batch gradient descent} 1.减少了每次更新loss的方差，使得更新过程更为稳定。2.数学上对于运算的优化使得对于mini-batch的梯度运算十分的高效。
 	\paragraph{Momentum}应该是增加每次SGD在relevant direction方向上的位移，就可以减少SGD的震荡，使得convege速度变快。
-	\paragraph{Nesterov accelerated gradient(NAG)} 将求梯度的位置换为利用动量项目预测的位置，我觉得主要是可以加速最后在local minima附近的收敛速度。
+	\paragraph{Nesterov accelerated gradient(NAG)} 将求梯度的位置换为利用动量项目预测的位置，经过推导，实质是考虑了loss fuction的二阶导，推导链接\url{https://zhuanlan.zhihu.com/p/22810533}.
 	\paragraph{Adagrad}自适应选择learning rate，对更新较快的参数(一直梯度较大)的，减小步长，对梯度较小的参数增加步长，并且随着更新的次数增加，学习步长总体趋势都是下降的，可以理解为一开始距离local minima还比较远，可以快速下降，到了local minima附近应该放慢学习率，避免震荡。但是发现，因为learning rate 一直下降，在一些网络中出现训练停止的现象。	
+	\paragraph{Adadelta}为了解决adagrad学习率下降过快，其对于过往梯度的累积通过一个时间窗实现，没有储存W个状态的梯度值，而是使用类似动量因子的平均方法，并利用一阶的优化算法去近似牛顿法(二阶法)。
+	\paragraph{RMSprop}解决RNN效果很好。
+	\paragraph{Adam}解决自适应学习速率下降过快的问题的同时，同时当前梯度也借用动量的思想进行指数移动平均。同时平滑时候初始化为零会使平滑结果偏向0，因此采用了修正来抵消偏差。adam在大多数情况下表现较好。
+	\paragraph{Adamax}对梯度的自适应分母采用无穷范数,无需像adam一样修正初始化偏差。
+	\paragraph{NAdam}更新中的一项平滑项改为当前已经更新的项。
+	\paragraph{which to use}1.数据稀疏使用自适应学习率的算法 2.Adam might be the best overall choise 3.如果网络复杂并且想快速收敛，建议使用自适应学习率算法。
+	\paragraph{Additional strategies for optimizing SGD} 1.Shuffling and Curriculum Learning,shuffle the training data after every epoch,框架已经内置，curriculum learning,example的顺序也十分重要，有论文显示train lstm 时候先简单后复杂有更好的训练结果。3.batch normalization 4.early stopping 5.Gradient noise，起初在梯度上加上一个均值为零，方差退火的噪声，发现可以使得网络发现不同的local minima，对poor initialization也表现出较好的鲁棒性。
 \end{document}
