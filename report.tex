@@ -11,11 +11,9 @@
 	
 	\bfseries
 	1.深度学习理论相关 \\
-	\indent
-	1.将基本所有GAN的基础知识补上了。\\
-\indent	2.读了几个经典GAN网络的代码。\\
-\indent	3.CS231。\\
-\indent 4.一些机器学习理论相关
+\indent 2.一些机器学习理论相关\\
+\indent 3.非凸优化方法汇总。\\
+\indent 4.动作迁移进展
 \mdseries
 
 \section{deep learning理论}
@@ -35,7 +33,11 @@
 	\paragraph{避免overfitting 的方法} 1.data augmentation,如图片，加噪声，旋转等等。2.Early stopping 3.weight decay,促使无用的参数消失。4.dropout层  5.Network Structure
 	
 \section{机器学习理论}
-
+		1.PLA对于linear separable的data的收敛性。\\
+\indent		2.n维线性分类器的VC-dimension为n+1.\\
+	\indent	3.泛化误差上界的证明，上界并不紧致，data size 大概10VC一般就可以取得较好的效果.\\
+	\indent 4.数据带有噪标签的泛化误差上界。\\
+\indent			5.深层网络的Vc-dimension非常大，VC-dimension的理论并不能解释深层网络的泛化能力。
 \section{Paper Reading} 
 	 \subsection{An overview of gradient descent optimization algorithms} 
 	\paragraph{Batch gradient descent} 最原始的梯度下降，每次梯度下降需要计算整个dataset的loss，更新慢，无法进习惯online training。
@@ -49,6 +51,11 @@
 	\paragraph{Adam}解决自适应学习速率下降过快的问题的同时，同时当前梯度也借用动量的思想进行指数移动平均。同时平滑时候初始化为零会使平滑结果偏向0，因此采用了修正来抵消偏差。adam在大多数情况下表现较好。
 	\paragraph{Adamax}对梯度的自适应分母采用无穷范数,无需像adam一样修正初始化偏差。
 	\paragraph{NAdam}更新中的一项平滑项改为当前已经更新的项。
-	\paragraph{which to use}1.数据稀疏使用自适应学习率的算法 2.Adam might be the best overall choise 3.如果网络复杂并且想快速收敛，建议使用自适应学习率算法。
-	\paragraph{Additional strategies for optimizing SGD} 1.Shuffling and Curriculum Learning,shuffle the training data after every epoch,框架已经内置，curriculum learning,example的顺序也十分重要，有论文显示train lstm 时候先简单后复杂有更好的训练结果。3.batch normalization 4.early stopping 5.Gradient noise，起初在梯度上加上一个均值为零，方差退火的噪声，发现可以使得网络发现不同的local minima，对poor initialization也表现出较好的鲁棒性。
+	\paragraph{which to use}1.数据稀疏使用自适应学习率的算法 2.Adam might be the best overall choise 3.如果网络复杂并且想快速收敛，建议使用自适应学习率算法。\\
+     \bfseries Additional strategies for optimizing SGD \mdseries 
+ 1.Shuffling and Curriculum Learning,shuffle the training data after every epoch,框架已经内置\\2.curriculum learning,example的顺序也十分重要，有论文显示train lstm 时候先简单后复杂有更好的训练结果。\\3.batch normalization\\4.early stopping \\5.Gradient noise，起初在梯度上加上一个均值为零，方差退火的噪声，发现可以使得网络发现不同的local minima，对poor initialization也表现出较好的鲁棒性。
+ \section{动作迁移进展}
+ \indent 与张老师讨论后，决定在伯克利的文章(everybody dance now)基础上做改动，将其传动作特征的媒介改为SPML人体模型，可以保留更多的中间信息，以求获得更好的效果。\\
+ \indent 工作将基于一篇image提取SPML的论文以及计算所一篇不同SPML模型之间deformation的迁移，最后将迁移好的模型作为conditional GAN的输入生成imagn。\\
+ \indent 假期间在自己的笔记本上配置了SPML提取的demo，后面的代码环境配置需要一定的硬件要求，国庆假期后与张老师申请下实验室的计算资源。
 \end{document}
