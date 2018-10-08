@@ -217,7 +217,16 @@ So the it is unique. \\
 \end{exercise}
 
 \begin{solution}
-	Put your solutions here. 
+	1.we assume that $x_1 = P_s(x)$,and make $ v = x - x_1$,we have prove the $	\langle v,y-x_1	\rangle \leq 0$ ,so $\langle v,y \rangle> < \langle v,x_1 \rangle $ ,and 
+$\langle v,x-x_1\rangle > 0$,so $\langle v,x \rangle > \langle v,x_1 \rangle $, so$\langle v,y \rangle \leq \langle v,x \rangle -\epsilon ,\,\forall y \in S_1$. \\
+\indent	2. we  construct a new set $$ S_0 = S_1 -S_2 = \{x_1 - x_2|x_1 \in S_1 ,\, S_2 \in S_2 \}$$
+	and we know S is convex,closed and $S \neq \emptyset$,and $S_1 \bigcap S_2 = \emptyset$ ,so $ O \notin S$,so there must exist v can make $$ \langle v,x-0 \rangle > 0,\,\forall x \in S \text{the conclusion of question 1} $$ \\ \indent we prove it.
+	\indent \\
+	\indent3.when $S_1$ is closed ,we have prove it,and when $S_1 $is't closed,what we can define $P_s(x)$ as a limit point of  $z_k \in S_1$ which can make $ ||z_k - x||  < ||z_{k-1} - x||,$,and we easy to know $P_s(x) \in S_1^c$because $S_1 $is't closed,so the proof of 1 the x can be $x_1$,so $ \langle v,x - x_1 \rangle \> 0$ should change to$ \langle v,x - x_1 \rangle \geq 0 $,the = will be ok when x in the border of set $S_1$. \\
+ \indent	so we get $\langle v,y\rangle\leq\langle v, x\rangle,\,\forall\,y\in S_1$
+\\
+\indent 4. we can use the conclusion of 3 and do the same thing as 2 and we can prove it easily.
+
 \end{solution}
 
 
