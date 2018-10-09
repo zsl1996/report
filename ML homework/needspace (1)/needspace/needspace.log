@@ -1,0 +1,27 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=latex 2018.8.22)  11 SEP 2018 12:22
+entering extended mode
+**./needspace.ins
+(needspace.ins
+LaTeX2e <2016/03/31>
+Babel <3.9q> and hyphenation patterns for 1 language(s) loaded.
+(needspace.tex (filecontents.sty
+Package: filecontents 2018/05/30 v1.4 Create an external file from within a LaT
+eX document
+)
+
+LaTeX Warning: Writing file `./needspace.sty'.
+
+\openout15 = `needspace.sty'.
+
+
+ ) ) 
+Here is how much of TeX's memory you used:
+ 17 strings out of 495238
+ 262 string characters out of 3182753
+ 45120 words of memory out of 3000000
+ 3392 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 13i,0n,10p,171b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+No pages of output.

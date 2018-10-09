@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% LaTeX Template
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & Fran莽ois F茅votte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+\usepackage{CTEX}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+
+\title{Report} % Title of the assignment
+
+\author{Shilong Zhang} % Author name and email address
+
+\date{2018年10月8日 --- \today} % University, school and/or department name(s) and a date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section*{Abstract} % Unnumbered section
+	\bfseries
+ 1.Paper reading: 一篇动作迁移相关，一篇GAN相关，一篇ICML 208最佳论文，一篇经典的框架PixtoPix  \\
+\indent 2.CS231:之前好多都自己看过了，基本过了一遍，作业下周开始做。\\
+\indent3.动作迁移进展:张老师已经分给了我实验室服务器的一个账号。\\
+\indent 4.机器学习理论:凸优化相关
+
+\mdseries
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Paper Reading } % Numbered section
+
+\subsection{Neural Animation and Reenactment of Human Actor Videos}
+\bfseries 基本思路，通过已有方法，创建人体3D模型，提取source 的动作，将S的动作参数迁移到target上，并分别渲染6个重要部分，并连同深度信息送入conditional GAN 生成更具细节的图像。\\
+\indent GAN 训练使用target的video frames + 提取出来的3D模型渲染的部分+深度信息训练。 \mdseries
+	\subsubsection{Training corpus}
+\indent Video,12K frames (8 minuites), 必须包括常见的动作。\\
+\indent Reconstruct target person 3D model\\
+\indent he conditional-GAN input\\
+\indent D model ->rendering color and deep image ->分割成人体的不同的部位 + 背景 \\
+\indent 渲染只需要产生midium-quality的的输出，再通过GAN提高质量。相比直接render high-quality的全身在光照建模体现出优势
+	\subsubsection{Motion transfer}
+	Source pose parameter  ->optimal pose parameter->  target pose parameter\\
+	考虑到source  与target 的骨骼模型的不同，pose 参数需要求解一个最优化问题(IK problem)来转换下。
+	\subsubsection{Architecture of GAN}
+	主体： 自动编解码器+PatchGAN
+	\paragraph{改进}
+1. Generator:  skip connection+ cascade refinement strategy 
+2. loss: GAN loss + Ll1(G)
+3. Discriminator :patch GAN 的基础上，对不同区域的打分进行加权。实现时候使用L1 loss作为Attention map，即让patchGAN更加注意L1loss较大的地方，因为这暗示这些地方Generator学习的较慢。
+	\subsubsection{Experiment}
+	与真实rendering 的效果可比拟。
+\indent	研究了各个创新点的功效。
+\indent		1.Conditioning Input   2.Attention Map
+\indent		Limitation
+\indent		两帧之间动作非线性、
+\indent		动作造成遮挡
+\indent		有些比较有挑战性的动作没有出现在training data中，泛化能力就差。
+	
+\section{Implementation}
+
+Proin lobortis efficitur dictum. Pellentesque vitae pharetra eros, quis dignissim magna. Sed tellus leo, semper non vestibulum vel, tincidunt eu mi. Aenean pretium ut velit sed facilisis. Ut placerat urna facilisis dolor suscipit vehicula. Ut ut auctor nunc. Nulla non massa eros. Proin rhoncus arcu odio, eu lobortis metus sollicitudin eu. Duis maximus ex dui, id bibendum diam dignissim id. Aliquam quis lorem lorem. Phasellus sagittis aliquet dolor, vulputate cursus dolor convallis vel. Suspendisse eu tellus feugiat, bibendum lectus quis, fermentum nunc. Nunc euismod condimentum magna nec bibendum. Curabitur elementum nibh eu sem cursus, eu aliquam leo rutrum. Sed bibendum augue sit amet pharetra ullamcorper. Aenean congue sit amet tortor vitae feugiat.
+
+In congue risus leo, in gravida enim viverra id. Donec eros mauris, bibendum vel dui at, tempor commodo augue. In vel lobortis lacus. Nam ornare ullamcorper mauris vel molestie. Maecenas vehicula ornare turpis, vitae fringilla orci consectetur vel. Nam pulvinar justo nec neque egestas tristique. Donec ac dolor at libero congue varius sed vitae lectus. Donec et tristique nulla, sit amet scelerisque orci. Maecenas a vestibulum lectus, vitae gravida nulla. Proin eget volutpat orci. Morbi eu aliquet turpis. Vivamus molestie urna quis tempor tristique. Proin hendrerit sem nec tempor sollicitudin.
+
+% File contents
+\begin{file}[hello.py]
+\begin{lstlisting}[language=Python]
+#! /usr/bin/python
+
+import sys
+sys.stdout.write("Hello World!\n")
+\end{lstlisting}
+\end{file}
+
+Fusce eleifend porttitor arcu, id accumsan elit pharetra eget. Mauris luctus velit sit amet est sodales rhoncus. Donec cursus suscipit justo, sed tristique ipsum fermentum nec. Ut tortor ex, ullamcorper varius congue in, efficitur a tellus. Vivamus ut rutrum nisi. Phasellus sit amet enim efficitur, aliquam nulla id, lacinia mauris. Quisque viverra libero ac magna maximus efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum mollis eros in tellus fermentum, vitae tristique justo finibus. Sed quis vehicula nibh. Etiam nulla justo, pellentesque id sapien at, semper aliquam arcu. Integer at commodo arcu. Quisque dapibus ut lacus eget vulputate.
+
+% Command-line "screenshot"
+\begin{commandline}
+	\begin{verbatim}
+		$ chmod +x hello.py
+		$ ./hello.py
+
+		Hello World!
+	\end{verbatim}
+\end{commandline}
+
+Vestibulum sodales orci a nisi interdum tristique. In dictum vehicula dui, eget bibendum purus elementum eu. Pellentesque lobortis mattis mauris, non feugiat dolor vulputate a. Cras porttitor dapibus lacus at pulvinar. Praesent eu nunc et libero porttitor malesuada tempus quis massa. Aenean cursus ipsum a velit ultricies sagittis. Sed non leo ullamcorper, suscipit massa ut, pulvinar erat. Aliquam erat volutpat. Nulla non lacus vitae mi placerat tincidunt et ac diam. Aliquam tincidunt augue sem, ut vestibulum est volutpat eget. Suspendisse potenti. Integer condimentum, risus nec maximus elementum, lacus purus porta arcu, at ultrices diam nisl eget urna. Curabitur sollicitudin diam quis sollicitudin varius. Ut porta erat ornare laoreet euismod. In tincidunt purus dui, nec egestas dui convallis non. In vestibulum ipsum in dictum scelerisque.
+
+% Warning text, with a custom title
+\begin{warn}[Notice:]
+  In congue risus leo, in gravida enim viverra id. Donec eros mauris, bibendum vel dui at, tempor commodo augue. In vel lobortis lacus. Nam ornare ullamcorper mauris vel molestie. Maecenas vehicula ornare turpis, vitae fringilla orci consectetur vel. Nam pulvinar justo nec neque egestas tristique. Donec ac dolor at libero congue varius sed vitae lectus. Donec et tristique nulla, sit amet scelerisque orci. Maecenas a vestibulum lectus, vitae gravida nulla. Proin eget volutpat orci. Morbi eu aliquet turpis. Vivamus molestie urna quis tempor tristique. Proin hendrerit sem nec tempor sollicitudin.
+\end{warn}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
